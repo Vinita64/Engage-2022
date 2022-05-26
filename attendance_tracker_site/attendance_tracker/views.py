@@ -21,7 +21,7 @@ THRESHOLD_ATTENDANCE_VALUE = 70
 daysWeek = ['Monday', 'Tuesday', 'Wednesday',
             'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-
+#Helper method to make face comparison easy
 def students_info(student_data):
     student_encoded = []
     student_names = []
@@ -33,7 +33,7 @@ def students_info(student_data):
         student_names.append(student.student_name)
     return [student_names, student_encoded]
 
-
+#Covert base64 string to a image file
 def get_face_encoding_from_base64(data):
     format, imgstr = data.split(';base64,')
     image = face_recognition.load_image_file(
@@ -45,7 +45,7 @@ def get_face_encoding_from_base64(data):
 def index(request):
     return render(request, "attendance_tracker/index.html")
 
-
+#Takes a photo as input and for the current duration, checks timetable and updates attendance
 def update_attendance(request):
     try:
         unknown_student_pic_encoding = get_face_encoding_from_base64(
@@ -81,6 +81,7 @@ def update_attendance(request):
         print(traceback.format_exc())
         return render(request, "attendance_tracker/updated_attendance.html", {'error': "Couldn't render anything!"})
 
+#helper method to calculate number of classes for a particular subject
 def subject_count(date_from, date_to, number_of_classes_per_day):
 
     total_days = (date_to-date_from).days
@@ -103,9 +104,11 @@ def subject_count(date_from, date_to, number_of_classes_per_day):
     print("Total count:",total_count)
     return total_count
 
+#Report page initially 
 def initial_attendance_report(request):
     return render(request, "attendance_tracker/attendance_report.html", {'students_list': []})
 
+#Display students with less attendance
 def show_attendance_report(request):
     depts = ['CSE','ECE']
     student_list = []
@@ -151,7 +154,7 @@ def show_attendance_report(request):
     return render(request, "attendance_tracker/attendance_report.html", {'students_list': student_list, 'startDate' : startDate, 'endDate' : endDate}) 
 
 
-
+#Display attendance by department
 def show_dept_attendance_report(request):
     selected_dept = request.GET.get('selected_dept')
     startDateStr = request.GET.get('startDate')
@@ -169,9 +172,6 @@ def show_dept_attendance_report(request):
     students_list = Student.objects.filter(departement=selected_dept)
     subject_list = Classes.objects.filter(departement=selected_dept)
     
-    #date_from = datetime.date(timezone.now().year, timezone.now().month, 1)
-    #date_to = datetime.date(timezone.now().year,
-    #                        timezone.now().month, timezone.now().day)
     date_from =startDate 
     date_to = endDate
     total_subject_classes = {}
@@ -200,6 +200,7 @@ def show_dept_attendance_report(request):
         student_attendance.append(student_obj)
     return render(request, "attendance_tracker/dept_report.html", {'time_table_list': subject_list, 'student_list': student_attendance, 'selected_dept': selected_dept, 'startDate' : startDate , 'endDate' : endDate})
 
+#Send attendance mail
 def send_attendance_mail(request):
     print("Came to send mail")
     subject = "Warning Low Attendance"  
