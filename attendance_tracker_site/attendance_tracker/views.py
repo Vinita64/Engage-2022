@@ -144,7 +144,7 @@ def show_attendance_report(request):
         #    student=student).filter(date__month=timezone.now().month).count()
             if student.departement==dept:
                 attendance_count = Attendance.objects.filter(
-                    student=student).filter(date__month=timezone.now().month).count()
+                    student=student).filter(date__gte=startDate).filter(date__lte=endDate).count()
                 attendance_percent =(attendance_count/total_count) * 100 
                 if(attendance_percent < THRESHOLD_ATTENDANCE_VALUE):
                      student_list.append({ 'student_name' : student.student_name, 'attendance_percentage':attendance_percent  })
