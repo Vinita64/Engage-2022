@@ -1,0 +1,56 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+  <section class="flex flex-col gap-5 min-h-full bg-slate-300">
+    <header class="bg-white p-8">
+      <h2 class="text-3xl text-center">Track Attendance</h2>
+    </header>
+    <div class="flex-1">
+      <div class="flex justify-center gap-4">
+        <div class="camera p-4 bg-white rounded-lg shadow-lg">
+          <h2 class="text-xl text-center py-2">Current Video Feed</h2>
+          <video id="video">Video stream not available.</video>
+          <div class="p-4">
+            <button
+              id="startbutton"
+              class="bg-green-500 text-white px-4 py-2 rounded-lg mx-auto block"
+            >
+              Take photo
+            </button>
+          </div>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-lg">
+          <h2 class="text-xl text-center py-2">Current Snapshot</h2>
+          <canvas id="canvas">
+            <div class="output">
+              <img
+                id="photo"
+                src=""
+                alt="The screen capture will appear in this box."
+              />
+            </div>
+          </canvas>
+        </div>
+      </div>
+      <div class="mt-5">
+        <form
+          class="flex flex-col w-2/5 mx-auto gap-4 bg-white p-9 rounded-md"
+          action="{% url 'attendance_tracker:update_attendance' %}"
+          method="post"
+          id="checkImage"
+        >
+          {% csrf_token %}
+          <input type="text" class="hidden" id="studentPic" name="student_pic" />
+          <button
+            class="bg-violet-500 px-4 py-2 text-white rounded-md text-lg"
+            type="submit"
+          >
+            Update Attendance
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script src="{% static 'attendance_tracker/takeSnap.js' %}"></script>
+{%endblock content%}

@@ -1,0 +1,88 @@
+
+body{
+    /*font-family: 'Montserrat';
+    /* background-color: #E8F9FD; */
+    /*background-image:url('https://i.gifer.com/IYiR.gif');
+    background-repeat:repeat
+      background-color: #BDE6F1;;
+     background-size: cover;*/
+      background-color: #BDE6F1; 
+    }
+  
+  
+  h1 {
+    font-weight: 900;
+    font-size: 3.5rem;
+    line-height: 1.5;
+  }
+  
+  h2 {
+    /* font-family: "Montserrat"; */
+    font-weight: 900;
+    font-size: 3rem;
+    line-height: 1.5;
+  }
+  
+  h3 {
+    /* font-family: "Montserrat"; */
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  p {
+    color: white;
+  }
+  
+  #title {
+    background-color: #ff4c68;
+    color: #fff;
+  }
+  
+  .container-fluid {
+    padding: 3% 15% 7%;
+  }
+  
+  .calor1{
+      background-color:#FF6B6B;
+
+      /*background-color:#79aec8;
+    /*background-color:rgb(139 92 246 / var(--tw-bg-opacity));
+    /* background-color: #fff; */
+  }
+  
+  .calor2 {
+      /* background-color: #90E0EF; */
+      /*background-color:#B9F8D3;*/
+      /*--tw-bg-opacity: 1;
+        background-color: rgb(139 92 246 / var(--tw-bg-opacity));*/
+        background-color:#CE49BF
+    }
+  
+    .calor3 {
+      /* background-color: #90E0EF; */
+      background-color:#6BCB77;
+    }
+  
+  /* Pricing Section */
+  #pricing {
+    padding: 100px;
+    text-align: center;
+  }
+  
+  .pricing-column {
+    padding: 3% 2%;
+  }
+  
+  /* Footer */
+  #footer {
+    text-align: center;
+    padding: 5%;
+  }
+  
+  .icons {
+    margin: 20px 10px;
+  }
+  
+
+
+

@@ -1,0 +1,80 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{%block content%}
+<section class="flex flex-col gap-5 min-h-full bg-slate-300">
+  <header class="bg-white p-8">
+    <h2 class="text-3xl text-center">Attendance Report</h2>
+  </header>
+  <div class="flex-1">
+    <div class="bg-white mt-4 w-2/5 mx-auto p-8">
+        <nav>
+            <ol>
+                <li>
+                    <a href="/attendance_tracker/attendance_report/by_dept" class="bg-violet-500 px-4 py-2 text-white rounded-md text-lg">Reports by Department</a>                
+                </li>
+                <li></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="bg-white mt-4 w-2/5 mx-auto p-8">
+        <h1 class="text-2xl"></h1>
+        <nav>
+            <ol>
+                <li>
+                    <a href="/charts_app/" class="bg-violet-500 px-4 py-2 text-white rounded-md text-lg">Student Distribution</a>
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="bg-white w-2/5 mx-auto p-8 mt-4">
+        <h1 class="bg-violet-500 px-4 py-2 text-white rounded-md text-lg">
+            Students with less than 70% attendance :
+        </h1>
+        <form method="GET" class="flex justify-center gap-4 rounded-md flex-col p-4" action="{% url 'attendance_tracker:get_attendance_report' %}">
+          <div class="flex justify-between w-1/2 mx-auto">
+            <input id="startDate" type="date" name="startDate" value={{startDate|date:"Y-m-d"}} class="border p-2 mr-2">
+            <input id="endDate" type="date" name="endDate" value={{endDate|date:"Y-m-d"}} class="border p-2">  
+          </div>
+          <button type="submit" class="bg-green-400 px-2 py-2 text-white rounded-md">Get Student List</button>
+        </form>
+      </div>
+      {% if no_relevant_classes %}
+          <div class="bg-orange-200 text-orange-700 p-4 mt-4 rounded-md text-lg text-center">
+              No relevant classes for CSE
+          </div>
+      {% elif students_list %}
+      <div class="bg-white w-2/5 mx-auto p-8 mt-4">
+        <ul class="p-8">
+          {% for student in students_list %}
+          <li
+            class="mt-2 text-white bg-orange-400 px-4 py-2 rounded-md text-lg capitalize flex justify-between"
+          >
+            <span>{{student.student_name}}</span>
+            <span>{{student.attendance_percentage | floatformat}}%</span>
+          </li>
+          {% endfor %}
+        </ul>
+        </div>
+      {% endif %}
+      <div>
+        <form
+          action="{% url 'attendance_tracker:send_attendance_mail' %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button
+            class="bg-green-500 text-white px-4 py-2 rounded-lg mx-auto block mt-4" 
+            type="submit"
+          >
+          Send Warning Mails
+          </button>
+        </form>
+      </div>    
+        
+    </div>
+  </div>
+
+
+  
+</section>
+{%endblock content%}

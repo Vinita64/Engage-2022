@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block content%}
+    <section class="flex flex-col gap-5 min-h-full bg-slate-300">
+      <header class="bg-white p-8">
+        
+        <h2 class="text-3xl text-indigo-700 text-center">Updated Attendance</h2>
+        
+      </header>
+      <div class="flex-1 flex justify-center items-center">
+      {% if error %}
+        <div class="bg-white">
+          <p class="text-red-400">{{error}}</p>
+        </div>
+      {% elif class_not_found %}
+        <div class="w-72 p-7 bg-white rounded-md shadow-md">
+          <img src="{% get_static_prefix %}{{student.student_image.name}}" alt="Student Pic">
+          <p class="text-green-600 text-2xl capitalize py-2 text-center">{{student.student_name}}</p>
+          <p class="text-orange-500 text-xl capitalize py-2 text-center">{{class_not_found}}</p>
+        </div>
+      {% elif student %}
+        <div class="w-72 p-7 bg-white rounded-md shadow-md">
+          <img src="{% get_static_prefix %}{{student.student_image.name}}" alt="Student Pic">
+          <p class="text-green-600 text-2xl capitalize py-2 text-center">{{student.student_name}}</p>
+          <p class="text-green-600 text-2xl capitalize py-2 text-center">You are attending: {{current_class}}!</p>
+        </div>
+      {%endif%}
+      </div>
+    </section>
+{%endblock content%}

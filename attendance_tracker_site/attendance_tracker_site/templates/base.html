@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Track Attendance</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'attendance_tracker/fonts.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'attendance_tracker/app.css' %}"
+    />
+    <a href="/" class="bg-blue-400 px-2 py-2 text-white rounded-md">Home</a>
+  </head>
+  <body>
+    {% block content %}
+    
+    <p>Placeholder text in base template. Replace with page content.</p>
+    {% endblock content %}
+  </body>
+</html>

@@ -1,0 +1,8 @@
+- Create a `virtualenv` in the root folder. By following instructions based on your OS.
+- Once `virtualenv` is created and activated run : `pip install CMake` and `pip install -r requirements.txt`
+- Go into `attendance_tracker_site` 
+- Run the migrations : `python manage.py migrate` - sync models and database
+- Run the dev server `python manage.py runserver`
+- Login to admin portal : `http://localhost:8000/admin` (username: `vinita` and password `vinita`)
+- Add some students in Student table. Make sure to upload images.
+- Go to a `http://localhost:8000/` and see magic happen# Engage_2022

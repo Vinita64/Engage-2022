@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracking With Face Recognition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'student_management/start.css' %}"
+    />
+    <script src="https://kit.fontawesome.com/a48cc7111e.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&family=Ubuntu&display=swap" rel="stylesheet">
+
+<style>
+    
+</style>
+</head>
+<body>
+    <section id="pricing">
+        <h2>Attendance Tracking System</h2>
+        <h3>With Face Recognition</h3>
+        <div class="row">
+    
+          <div class="pricing-column col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-header calor1">
+                <h3>Register Student</h3>
+              </div>
+              <div class="card-body calor1">
+                <p>Enter details of a new student for his/her registration. This facility is only for administration.</p>
+                <a href="/admin"><button class="btn btn-lg btn-block btn-outline-dark" type="button" >Register</button></a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="pricing-column col-lg-4 col-md-6">
+            <div class="card">
+              <div class="card-header calor2">
+                <h3>Update Attendance</h3>
+              </div>
+              <div class="card-body calor2">
+                <p>Students, take your picture and mark the attendance for an ongoing class.</p>
+                <a href="/attendance_tracker"><button class="btn btn-lg btn-block btn-outline-dark" type="button">Update</button></a>
+              </div>
+            </div>
+          </div>
+    
+          <div class="pricing-column col-lg-4">
+            <div class="card">
+              <div class="card-header calor3">
+                <h3>Attendance Reports</h3>
+              </div>
+              <div class="card-body calor3">
+                <p>Generate attendance reports subject wise and student wise.</p>
+                <a href="/attendance_tracker/attendance_report"><button class="btn btn-lg btn-block btn-outline-dark" type="button">Reports</button></a>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </section>
+    
+      <!-- Footer -->
+    
+      <footer id="footer">
+    
+        <a href="https://www.linkedin.com/in/vinita-katlamudi-67130421b/"><i class="icons fab fa-linkedin"></i></a>
+        <a href="https://github.com/Vinita64/Engage_2022.git"><i class="icons fab fa-github"></i></a>
+    
+        <p>© Copyright 2022 Vinita Katlamudi</p>
+    
+      </footer>
+    
+</body>
+</html>
