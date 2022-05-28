@@ -1,5 +1,6 @@
 from django.db import models
-
+#Structure or details of what info classes, Timetables, Students and Attendance have
+# Entered only two departments for demo purpose 
 class Dept(models.TextChoices):
         ECE = 'ECE'
         CSE = 'CSE'

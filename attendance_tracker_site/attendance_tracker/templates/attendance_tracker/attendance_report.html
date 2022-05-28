@@ -1,6 +1,7 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {%block content%}
+<!--The page which appears on clicking reports button in home page-->
 <section class="flex flex-col gap-5 min-h-full bg-slate-300">
   <header class="bg-white p-8">
     <h2 class="text-3xl text-center">Attendance Report</h2>
@@ -20,7 +21,7 @@
         <h1 class="text-2xl"></h1>
         <nav>
             <ol>
-                <li>
+                <li><!--Link Charts-->
                     <a href="/charts_app/" class="bg-violet-500 px-4 py-2 text-white rounded-md text-lg">Student Distribution</a>
                 </li>
             </ol>
@@ -32,13 +33,14 @@
         </h1>
         <form method="GET" class="flex justify-center gap-4 rounded-md flex-col p-4" action="{% url 'attendance_tracker:get_attendance_report' %}">
           <div class="flex justify-between w-1/2 mx-auto">
+            <!--Date format, to and from dates -->
             <input id="startDate" type="date" name="startDate" value={{startDate|date:"Y-m-d"}} class="border p-2 mr-2">
             <input id="endDate" type="date" name="endDate" value={{endDate|date:"Y-m-d"}} class="border p-2">  
           </div>
           <button type="submit" class="bg-green-400 px-2 py-2 text-white rounded-md">Get Student List</button>
         </form>
       </div>
-      {% if no_relevant_classes %}
+      {% if no_relevant_classes %}<!--Border case-->
           <div class="bg-orange-200 text-orange-700 p-4 mt-4 rounded-md text-lg text-center">
               No relevant classes for CSE
           </div>

@@ -143,8 +143,6 @@ def show_attendance_report(request):
     
     
         for student in Student.objects.all():
-        #attendance_count = Attendance.objects.filter(
-        #    student=student).filter(date__month=timezone.now().month).count()
             if student.departement==dept:
                 attendance_count = Attendance.objects.filter(
                     student=student).filter(date__gte=startDate).filter(date__lte=endDate).count()

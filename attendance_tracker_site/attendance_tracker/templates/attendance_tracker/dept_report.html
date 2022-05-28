@@ -1,4 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
+<!--Page visible on clicking reports by department-->
 <section class="flex flex-col gap-5 min-h-full bg-slate-700">
   <header class="bg-white p-8">
     <h2 class="text-3xl text-center">Attendance Report By Department</h2>
@@ -7,7 +8,7 @@
     <div class="bg-white w-2/5 mx-auto p-8 rounded-md shadow-md">
       <form method="GET" class="flex justify-center gap-4 rounded-md flex-col p-4">
         <select name="selected_dept" class="p-4 bg-blue-400 text-white rounded-md">
-          {% if selected_dept == 'ECE' %}
+          {% if selected_dept == 'ECE' %}<!--Option for choosing any of the departments entered-->
             <option value="ECE" selected>Electronics and Communication</option>
           {% else %}
             <option value="ECE">Electronics and Communication</option>
@@ -22,7 +23,7 @@
         <input id="endDate" type="date" name="endDate" value={{endDate|date:"Y-m-d"}} class="border p-2">  
         <button type="submit" class="bg-green-400 px-2 py-2 text-white rounded-md">Get Attendance Report</button>
       </form>
-    </div>
+    </div><!--Table with attendance for each subject in the branch-->
     <table class="bg-white w-2/5 mt-4 mx-auto p-4 rounded-md">
         <thead>
             <tr>

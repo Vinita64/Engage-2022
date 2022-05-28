@@ -18,19 +18,10 @@ def pie_chart(request):
         labels.append(Entry['departement'])
         data.append(Entry['dcount'])
         print(Entry['departement'],Entry['dcount'])
-    #queryset = Student.objects..order_by('departement')
 
-    #for departement in queryset:
-    #    labels.append(city.name)
-    #    data.append(city.population)
-
-    #return render(request, 'pie_chart.html', {
     return render(request,'charts_app/index.html',{
         'labels': labels,
         'data': data,
     })
 
-#def index(request):
-#    print("In charts")
-#    return render(request, 'charts_app/index.html')
 

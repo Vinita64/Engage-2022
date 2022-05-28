@@ -11,6 +11,7 @@
 
   let uploadForm = null;
   let imageData = null;
+  //Initializing
 
   function startup() {
     video = document.getElementById("video");
@@ -64,6 +65,7 @@
     clearphoto();
   }
 
+  //Remove photo
   function clearphoto() {
     let context = canvas.getContext("2d");
     context.fillStyle = "#AAA";
@@ -71,7 +73,8 @@
 
     photo.setAttribute("src", "");
   }
-
+  
+  //Take snapshot
   function takepicture() {
     let context = canvas.getContext("2d");
     if (width && height) {
